@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap");
+
+@mixin fontSizeColor($size, $color) {
+    font-size: $size;
+    color: $color;
+}
+
+$bgColor: #32342e;
+$titleColor: #5d9ce2;
+$textColor: #fff;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "montserrat", san-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.wrapper {
+    h2 {
+        @include fontSizeColor(1.25em, $titleColor);
+        text-transform: uppercase;
+        margin: 3em 0 1em 0;
+    }
+
+    h3 {
+        @include fontSizeColor(1.125em, $textColor);
+        font-weight: 700;
+        margin: 2em 0 0.5em;
+    }
+
+    p {
+        @include fontSizeColor(1em, $textColor);
+        margin: 0.5em 0;
+    }
+
+    .resume-left {
+        width: 100%;
+        background-color: $bgColor;
+
+        .resume-top {
+            text-align: center;
+            padding-top: 2em;
+
+            img {
+                display: block;
+                margin: 3em auto;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+
+            .name {
+                @include fontSizeColor(1.5em, $textColor);
+                padding: 0 3em;
+                text-transform: uppercase;
+            }
+
+            .title {
+                margin: 1em 0;
+            }
+
+            .btn-download {
+                width: 200px;
+                text-decoration: none;
+            }
+        }
+
+        .resume-bottom {
+            padding: 2em;
+
+            .contact {
+                h2 {
+                    margin-top: 1em;
+                }
+
+                a {
+                    display: block;
+                    text-decoration: none;
+                    color: $textColor;
+                }
+
+                i {
+                    margin: 0.5em 1em 0.5em 0;
+                }
+
+                .fa-phone {
+                    -webkit-transform: scaleX(-1);
+                    transform: scaleX(-1);
+                }
+            }
+
+            .education {
+                h3 {
+                    margin-top: 0;
+                }
+
+                .date {
+                    font-size: 0.875em;
+                    margin-bottom: 3em;
+                }
+            }
+        }
+    }
+
+    .resume-right {
+        padding: 2em;
+
+        .objective p,
+        .skills p,
+        .interests p {
+            color: $bgColor;
+        }
+
+        .card {
+            margin-bottom: 2em;
+
+            .job-title {
+                @include fontSizeColor(1em, $bgColor);
+                margin-top: 0;
+
+                .company {
+                    color: $titleColor;
+                    font-weight: 400;
+                }
+            }
+
+            .duration {
+                @include fontSizeColor(0.875em, $bgColor);
+                margin-bottom: 1.5em;
+            }
+
+            li {
+                font-size: 1em;
+                margin: 0.5em 1.25em;
+            }
+        }
+
+        .interests ul {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            grid-template-rows: 2fr 2fr;
+            list-style: none;
+
+            li {
+                margin: 1em 0;
+            }
+
+            i {
+                margin-right: 1em;
+            }
+        }
+    }
+
+    .btn {
+        color: $titleColor;
+        background-color: transparent;
+        border: 2px solid $titleColor;
+        border-radius: 5px;
+        padding: 1em;
+        margin: 2em 0;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &-download {
+            display: none;
+            i {
+                margin-right: 1em;
+            }
+        }
+
+        &-scroll-up {
+            display: block;
+            margin: 2em auto;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .wrapper {
+        .resume-left .resume-top {
+            .name,
+            .title {
+                padding: 0 1em;
+            }
+
+            .title {
+                word-wrap: break-word;
+            }
+        }
+        .resume-left .resume-bottom {
+            a {
+                word-wrap: break-word;
+                margin-bottom: 1em;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .wrapper {
+        .resume-left .resume-bottom,
+        .resume-right {
+            padding: 2em 1.5em;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+
+        .resume-left {
+            width: 45%;
+
+            .resume-bottom {
+                padding: 2em 1.25em;
+            }
+        }
+
+        .resume-right {
+            width: 55%;
+
+            .card .duration {
+                margin: 0.5em 0 0.75em;
+            }
+        }
+
+        .btn-scroll-up {
+            display: none;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .wrapper {
+        .resume-left .resume-top img {
+            width: 280px;
+            height: 280px;
+        }
+
+        .resume-left .resume-bottom,
+        .resume-right {
+            padding: 2em 4em;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .wrapper {
+        .resume-left {
+            width: 30%;
+
+            .resume-top {
+                img {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+
+            .btn-download {
+                display: block;
+                margin: 2em auto;
+            }
+
+            .resume-bottom {
+                padding: 2em 2.5em;
+            }
+        }
+
+        .resume-right {
+            width: 70%;
+
+            .interests ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .wrapper {
+        .resume-left .resume-bottom {
+            padding: 2em 5em;
+        }
+    }
+}
